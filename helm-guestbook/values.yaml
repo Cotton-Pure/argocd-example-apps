@@ -5,8 +5,8 @@
 replicaCount: 1
 
 image:
-  repository: gcr.io/google-samples/gb-frontend
-  tag: v5
+  repository: ghcr.io/tejasmanohar/guestbook
+  tag: latest
   pullPolicy: IfNotPresent
 
 containerPort: 80
