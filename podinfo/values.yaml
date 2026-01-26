@@ -1,0 +1,30 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: podinfo
+  namespace: podinfo
+spec:
+  project: default
+  source:
+    repoURL: https://stefanprodan.github.io/podinfo
+    chart: podinfo
+    targetRevision: 6.7.0
+    helm:
+      values: |
+        service:
+          type: ClusterIP
+        ingress:
+          enabled: true
+          hosts:
+            - host: podinfo.local
+              paths:
+                - /
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: podinfo
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
