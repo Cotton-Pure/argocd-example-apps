@@ -5,7 +5,7 @@ metadata:
 spec:
   ingressClassName: public
   rules:
-  - host: guestbook.local
+  - host: nginx.local
     http:
       paths:
       - backend:
